@@ -25,7 +25,12 @@ public class SmartArrayApp {
             }
         };
 
-        MyFunction func = t -> 2 * ((Integer) t);
+        MyFunction func = new MyFunction() {
+            @Override
+            public Object apply(Object t) {
+                return 2 * ((Integer) t);
+            }
+        };
 
         // Input: [-1, 2, 0, 1, -5, 3]
         SmartArray sa = new BaseArray(integers);
