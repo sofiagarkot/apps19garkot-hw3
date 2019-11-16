@@ -14,7 +14,8 @@ public class FilterDecorator extends SmartArrayDecorator {
     public FilterDecorator(SmartArray smartArray, MyPredicate myPredicate) {
         super(smartArray);
         this.filterPredicate = myPredicate;
-        this.newArr = new ArrayList<>(Arrays.asList(this.smartArray.toArray()).stream().filter((a) -> filterPredicate.test(a)).collect(Collectors.toList()));
+        this.newArr = new ArrayList<>(Arrays.asList(this.smartArray.toArray())
+                .stream().filter((a) -> filterPredicate.test(a)).collect(Collectors.toList()));
     }
 
     @Override
@@ -24,7 +25,7 @@ public class FilterDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "Filtering using MyPredicate"+this.newArr.toString();
+        return "Filtering using MyPredicate" + this.newArr.toString();
     }
 
     @Override
