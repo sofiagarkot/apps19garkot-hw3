@@ -33,10 +33,10 @@ class Student {
 
     @Override
     public boolean equals(Object obj) {
+        if (this.getSurname() == null) {
+            return false;
+        }
         if (obj instanceof Student) {
-            if (this.getSurname() == null) {
-                return false;
-            }
             return this.getSurname().equals(((Student) obj).getSurname()) && this.getName().equals(((Student) obj).getName());
         } else {
             return false;
