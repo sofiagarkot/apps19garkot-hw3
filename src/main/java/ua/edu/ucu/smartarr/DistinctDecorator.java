@@ -8,9 +8,11 @@ import java.util.stream.Collectors;
 public class DistinctDecorator extends SmartArrayDecorator {
 
     private ArrayList newArr;
+
     public DistinctDecorator(SmartArray smartArray) {
         super(smartArray);
-        this.newArr = (ArrayList) Arrays.asList(this.smartArray.toArray()).stream().distinct().collect(Collectors.toList());
+        this.newArr = (ArrayList) Arrays.asList(this.smartArray.toArray())
+                .stream().distinct().collect(Collectors.toList());
     }
 
     @Override
@@ -20,7 +22,7 @@ public class DistinctDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "Removing duplicates"+this.newArr.toString();
+        return "Removing duplicates" + this.newArr.toString();
     }
 
     @Override
