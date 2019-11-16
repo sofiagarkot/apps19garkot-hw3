@@ -74,7 +74,8 @@ public class SmartArrayApp {
         MyComparator cmpStudent = new MyComparator() {
             @Override
             public int compare(Object objectOne, Object objectTwo) {
-                return ((Student) objectOne).getSurname().compareToIgnoreCase(((Student) objectTwo).getSurname());
+                return ((Student) objectOne).getSurname()
+                        .compareToIgnoreCase(((Student) objectTwo).getSurname());
             }
         };
 
