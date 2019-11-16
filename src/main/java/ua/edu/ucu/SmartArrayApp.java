@@ -28,8 +28,8 @@ public class SmartArrayApp {
 
         MyComparator cmp = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Integer) o1) - ((Integer) o2);
+            public int compare(Object objectOne, Object objectTwo) {
+                return ((Integer) objectOne) - ((Integer) objectTwo);
             }
         };
 
@@ -73,8 +73,8 @@ public class SmartArrayApp {
 
         MyComparator cmpStudent = new MyComparator() {
             @Override
-            public int compare(Object o1, Object o2) {
-                return ((Student) o1).getSurname().compareToIgnoreCase(((Student) o2).getSurname());
+            public int compare(Object objectOne, Object objectTwo) {
+                return ((Student) objectOne).getSurname().compareToIgnoreCase(((Student) objectTwo).getSurname());
             }
         };
 
