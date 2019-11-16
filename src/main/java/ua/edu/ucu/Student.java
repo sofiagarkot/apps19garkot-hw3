@@ -33,12 +33,20 @@ class Student {
 
     @Override
     public boolean equals(Object obj) {
-        return this.getSurname().equals(((Student)obj).getSurname()) && this.getName().equals(((Student)obj).getName());
+        if (obj instanceof Student) {
+            if (this.getSurname() == null) {
+                return false;
+            }
+            return this.getSurname().equals(((Student) obj).getSurname()) && this.getName().equals(((Student) obj).getName());
+        } else {
+            return false;
+        }
+
     }
 
     @Override
     public int hashCode() {
-        return (int) (this.getGPA()/1.3);
+        return (int) (this.getGPA() / 1.3);
     }
 
     @Override
