@@ -1,16 +1,24 @@
 package ua.edu.ucu;
 
 import java.util.Arrays;
+
 import ua.edu.ucu.functions.MyComparator;
 import ua.edu.ucu.functions.MyFunction;
 import ua.edu.ucu.functions.MyPredicate;
-import ua.edu.ucu.smartarr.*;
+import ua.edu.ucu.smartarr.BaseArray;
+import ua.edu.ucu.smartarr.SmartArray;
+import ua.edu.ucu.smartarr.FilterDecorator;
+import ua.edu.ucu.smartarr.SortDecorator;
+import ua.edu.ucu.smartarr.MapDecorator;
+import ua.edu.ucu.smartarr.DistinctDecorator;
 
 public class SmartArrayApp {
+    static final int minGPA = 4;
+    static final int targetYear = 2;
 
     public static Integer[]
-            filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
-                
+    filterPositiveIntegersSortAndMultiplyBy2(Integer[] integers) {
+
         MyPredicate pr = new MyPredicate() {
             @Override
             public boolean test(Object t) {
@@ -50,7 +58,7 @@ public class SmartArrayApp {
     }
 
     public static String[]
-            findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
+    findDistinctStudentNamesFrom2ndYearWithGPAgt4AndOrderedBySurname(Student[] students) {
 
         SmartArray studentSmartArray = new BaseArray(students);
         studentSmartArray = new DistinctDecorator(studentSmartArray);
@@ -58,25 +66,26 @@ public class SmartArrayApp {
         MyPredicate prStudent = new MyPredicate() {
             @Override
             public boolean test(Object t) {
-                return ((Student)t).getYear() == 2 && ((Student) t).getGPA() >= 4;
+                return ((Student) t).getYear() == targetYear
+                        && ((Student) t).getGPA() >= minGPA;
             }
         };
 
         MyComparator cmpStudent = new MyComparator() {
             @Override
             public int compare(Object o1, Object o2) {
-                return ((Student)o1).getSurname().compareToIgnoreCase(((Student)o2).getSurname());
+                return ((Student) o1).getSurname().compareToIgnoreCase(((Student) o2).getSurname());
             }
         };
 
         MyFunction funcStudentMatchSurnames = new MyFunction() {
             @Override
             public Object apply(Object t) {
-                return ((Student)t).getSurname()+" "+((Student)t).getName();
+                return ((Student) t).getSurname() + " " + ((Student) t).getName();
             }
         };
 
-        studentSmartArray = new FilterDecorator(studentSmartArray,prStudent);
+        studentSmartArray = new FilterDecorator(studentSmartArray, prStudent);
 
         studentSmartArray = new SortDecorator(studentSmartArray, cmpStudent);
 
