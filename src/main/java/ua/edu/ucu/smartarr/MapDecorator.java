@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class MapDecorator  extends SmartArrayDecorator{
+public class MapDecorator extends SmartArrayDecorator {
 
     private ArrayList newArr;
 
-    public MapDecorator(SmartArray smartArray, MyFunction myfunc){
+    public MapDecorator(SmartArray smartArray, MyFunction myfunc) {
         super(smartArray);
-        this.newArr = (ArrayList) Arrays.asList(this.smartArray.toArray()).stream().map((a)->myfunc.apply(a)).collect(Collectors.toList());
+        this.newArr = (ArrayList) Arrays.asList(this.smartArray.toArray())
+                .stream().map((a) -> myfunc.apply(a)).collect(Collectors.toList());
 
     }
 
@@ -23,7 +24,7 @@ public class MapDecorator  extends SmartArrayDecorator{
 
     @Override
     public String operationDescription() {
-        return "Mapping to each element function MyFunc"+this.newArr.toString();
+        return "Mapping to each element function MyFunc" + this.newArr.toString();
     }
 
     @Override
