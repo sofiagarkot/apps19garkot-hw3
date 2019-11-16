@@ -9,9 +9,10 @@ import java.util.Collections;
 public class SortDecorator extends SmartArrayDecorator {
 
     private ArrayList<Object> newArr;
-    public SortDecorator(SmartArray smartArray, MyComparator comparator){
+
+    public SortDecorator(SmartArray smartArray, MyComparator comparator) {
         super(smartArray);
-        this.newArr = new ArrayList<> (Arrays.asList(this.smartArray.toArray()));
+        this.newArr = new ArrayList<>(Arrays.asList(this.smartArray.toArray()));
         Collections.sort(this.newArr, comparator);
     }
 
@@ -22,7 +23,7 @@ public class SortDecorator extends SmartArrayDecorator {
 
     @Override
     public String operationDescription() {
-        return "Sorted array using MyComparator"+this.newArr.toString();
+        return "Sorted array using MyComparator" + this.newArr.toString();
     }
 
     @Override
